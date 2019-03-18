@@ -24,6 +24,6 @@ const TodoEdit = resolve => {
 export const routes = [
   { path: "", component: Landing },
   { path: "/to-dos/search", component: TodoSearch },
-  { path: "/to-dos/edit/:id", component: TodoEdit, props: true },
+  { path: "/to-dos/edit/:id?", component: TodoEdit, props: true },
   { path: "*", redirect: "/" }
 ];

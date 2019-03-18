@@ -6,7 +6,16 @@ export default {
   props: {
     id: {
       type: String,
-      default: 0
+      default: "0"
+    },
+    mode: {
+      type: String,
+      default: "edit"
+    }
+  },
+  methods: {
+    isEditMode() {
+      return mode == "edit";
     }
   }
 };
