@@ -82,8 +82,11 @@ export default {
     switchDone(todo) {
       this.$store.dispatch("switchDone", todo);
     },
+    edit(todo) {
+      this.$router.push({ path: "edit/" + todo.id });
+    },
     navigateToAdd() {
-      this.$router.push({ path: "edit", query: { mode: "new" } });
+      this.$router.push({ path: "add" });
     }
   }
 };

@@ -1,11 +1,11 @@
-<b-container fluid>
+<b-container>
 
   <b-row>
     <b-col md="6" class="my-2 h3">Todos 
       <b-button
         size="sm"
         @click="navigateToAdd"
-        variant="success"
+        variant="primary"
       >Add
       </b-button>
     </b-col>
@@ -58,6 +58,7 @@
 
   <!-- Main table element -->
   <b-table
+    hover
     class="my-4"
     show-empty
     stacked="md"
@@ -79,8 +80,14 @@
       <b-button
         size="sm"
         @click="switchDone(row.item)"
-        variant="success"
+        variant="primary"
       >Switch Done
+      </b-button>
+      <b-button
+        size="sm"
+        @click="edit(row.item)"
+        variant="primary"
+      >Edit
       </b-button>
       <b-button
         size="sm"

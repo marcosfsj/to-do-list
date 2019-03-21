@@ -1,3 +1,43 @@
-<div>
-  <p>To-dos edit {{ id }}</p>
-</div>
+<b-container>
+
+  <b-row>
+    <b-col md="6" class="my-2 h3">Todos</b-col>
+  </b-row>
+
+  </b-row>
+    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+      <b-form-group
+        id="descriptionInputGroup"
+        label="Description:"
+        label-for="description"
+      >
+        <b-form-input
+          id="description"
+          type="text"
+          v-model="form.description"
+          required
+          placeholder="Enter to-do description" />
+      </b-form-group>
+
+      <b-form-group id="dateInputGroup" label="by Date:" label-for="date">
+        <b-form-input
+          id="date"
+          type="date"
+          v-model="form.date"
+          required
+          placeholder="Enter date" />
+      </b-form-group>
+      
+      <b-form-group id="doneInputGroup">
+        <b-form-checkbox 
+          id="done"
+          v-model="form.done"
+          value="true">Done?</b-form-checkbox>
+      </b-form-group>
+
+      <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button type="reset" variant="danger">Reset</b-button>
+    </b-form>
+  </b-row>
+
+</b-container>

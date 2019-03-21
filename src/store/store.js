@@ -8,7 +8,7 @@ import Vuex from "vuex";
 // import * as actions from "./actions";
 
 // Modules
-import Todo from "./modules/todo";
+import Todo from "./modules/todo/todo";
 
 Vue.use(Vuex);
 
