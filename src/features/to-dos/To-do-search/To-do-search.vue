@@ -1,5 +1,5 @@
-<template src="./To-do_search.html"></template>
-<style src="./To-do_search.css"></style>
+<template src="./To-do-search.html"></template>
+<style src="./To-do-search.css"></style>
 
 <script>
 import { mapGetters } from "vuex";

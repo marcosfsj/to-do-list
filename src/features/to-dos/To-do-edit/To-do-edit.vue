@@ -1,5 +1,5 @@
-<template src="./To-do_edit.html"></template>
-<style src="./To-do_edit.css"></style>
+<template src="./To-do-edit.html"></template>
+<style src="./To-do-edit.css"></style>
 
 <script>
 import { mapGetters } from "vuex";
@@ -49,6 +49,9 @@ export default {
       this.$nextTick(() => {
         this.show = true;
       });
+    },
+    teste() {
+      alert("test");
     }
   }
 };

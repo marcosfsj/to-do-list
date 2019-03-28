@@ -3,9 +3,9 @@ import Landing from "../components/layout/Landing.vue";
 // This is for lazy load with webpack
 const TodoSearch = resolve => {
   require.ensure(
-    ["../features/to-dos/To-do_search/To-do_search.vue"],
+    ["../features/to-dos/To-do-search/To-do-search.vue"],
     () => {
-      resolve(require("../features/to-dos/To-do_search/To-do_search.vue"));
+      resolve(require("../features/to-dos/To-do-search/To-do-search.vue"));
     },
     "to-do"
   );
@@ -13,9 +13,9 @@ const TodoSearch = resolve => {
 
 const TodoEdit = resolve => {
   require.ensure(
-    ["../features/to-dos/To-do_edit/To-do_edit.vue"],
+    ["../features/to-dos/To-do-edit/To-do-edit.vue"],
     () => {
-      resolve(require("../features/to-dos/To-do_edit/To-do_edit.vue"));
+      resolve(require("../features/to-dos/To-do-edit/To-do-edit.vue"));
     },
     "to-do"
   );
