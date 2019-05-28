@@ -3,10 +3,14 @@
 
 <script>
 import { mapGetters } from "vuex";
+import Test from "./Test";
 
 export default {
+  extends: Test,
+  props: {},
   data() {
     return {
+      text: "from sub class",
       totalRows: this.$store.getters.totalTodos,
       fields: [
         {
@@ -50,6 +54,14 @@ export default {
     }
   },
   methods: {
+    methodA() {
+      console.log("from subclass");
+    },
+    callmethodA() {
+      this.methodA();
+      this.methodB();
+      console.log(this.$parent);
+    },
     info(todo, index, button) {
       this.modalInfo.title = `Row index: ${index}`;
       this.modalInfo.content = JSON.stringify(todo, null, 2);

@@ -1,107 +1,77 @@
 <b-container>
 
   <b-row>
-    <b-col md="6" class="my-2 h3">Todos 
-      <b-button
-        size="sm"
-        @click="navigateToAdd"
-        variant="primary"
-      >Add
+    <b-col md="6" class="my-2 h3">Todos
+      <b-button size="sm" @click="navigateToAdd" variant="primary">Add
       </b-button>
     </b-col>
   </b-row>
 
   <!-- User Interface controls -->
   <b-row>
-      <b-col md="6" class="my-1">
-        <b-form-group label-cols-sm="3" label="Filter" class="mb-0">
-          <b-input-group>
-            <b-form-input v-model="filter" placeholder="Type to Search" />
-            <b-input-group-append>
-              <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
-            </b-input-group-append>
-          </b-input-group>
-        </b-form-group>
-      </b-col>
+    <b-col md="6" class="my-1">
+      <b-form-group label-cols-sm="3" label="Filter" class="mb-0">
+        <b-input-group>
+          <b-form-input v-model="filter" placeholder="Type to Search" />
+          <b-input-group-append>
+            <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+          </b-input-group-append>
+        </b-input-group>
+      </b-form-group>
+    </b-col>
 
-      <b-col md="6" class="my-1">
-        <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
-          <b-input-group>
-            <b-form-select v-model="sortBy" :options="sortOptions">
-              <option slot="first" :value="null">-- none --</option>
-            </b-form-select>
-            <b-form-select :disabled="!sortBy" v-model="sortDesc" slot="append">
-              <option :value="false">Asc</option> 
-              <option :value="true">Desc</option>
-            </b-form-select>
-          </b-input-group>
-        </b-form-group>
-      </b-col>
+    <b-col md="6" class="my-1">
+      <b-form-group label-cols-sm="3" label="Sort" class="mb-0">
+        <b-input-group>
+          <b-form-select v-model="sortBy" :options="sortOptions">
+            <option slot="first" :value="null">-- none --</option>
+          </b-form-select>
+          <b-form-select :disabled="!sortBy" v-model="sortDesc" slot="append">
+            <option :value="false">Asc</option>
+            <option :value="true">Desc</option>
+          </b-form-select>
+        </b-input-group>
+      </b-form-group>
+    </b-col>
 
-      <b-col md="6" class="my-1">
-        <b-form-group label-cols-sm="3" label="Sort direction" class="mb-0">
-          <b-input-group>
-            <b-form-select v-model="sortDirection" slot="append">
-              <option value="asc">Asc</option> <option value="desc">Desc</option>
-              <option value="last">Last</option>
-            </b-form-select>
-          </b-input-group>
-        </b-form-group>
-      </b-col>
+    <b-col md="6" class="my-1">
+      <b-form-group label-cols-sm="3" label="Sort direction" class="mb-0">
+        <b-input-group>
+          <b-form-select v-model="sortDirection" slot="append">
+            <option value="asc">Asc</option>
+            <option value="desc">Desc</option>
+            <option value="last">Last</option>
+          </b-form-select>
+        </b-input-group>
+      </b-form-group>
+    </b-col>
 
-      <b-col md="6" class="my-1">
-        <b-form-group label-cols-sm="3" label="Per page" class="mb-0">
-          <b-form-select :options="pageOptions" v-model="perPage" />
-        </b-form-group>
-      </b-col>
-    </b-row>
+    <b-col md="6" class="my-1">
+      <b-form-group label-cols-sm="3" label="Per page" class="mb-0">
+        <b-form-select :options="pageOptions" v-model="perPage" />
+      </b-form-group>
+    </b-col>
+  </b-row>
 
   <!-- Main table element -->
-  <b-table
-    hover
-    class="my-4"
-    show-empty
-    stacked="md"
-    :items="todoList"
-    :fields="fields"
-    :current-page="currentPage"
-    :per-page="perPage"
-    :filter="filter"
-    :sort-by.sync="sortBy"
-    :sort-desc.sync="sortDesc"
-    :sort-direction="sortDirection"
-    @filtered="onFiltered"
-  >
+  <b-table hover class="my-4" show-empty stacked="md" :items="todoList" :fields="fields" :current-page="currentPage"
+    :per-page="perPage" :filter="filter" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc"
+    :sort-direction="sortDirection" @filtered="onFiltered">
     <template slot="done" slot-scope="row">
       {{ row.value ? "Yes :)" : "No :(" }}
     </template>
 
     <template slot="actions" slot-scope="row">
-      <b-button
-        size="sm"
-        @click="switchDone(row.item)"
-        variant="primary"
-      >Switch Done
+      <b-button size="sm" @click="callmethodA" variant="primary">Switch Done
       </b-button>
-      <b-button
-        size="sm"
-        @click="edit(row.item)"
-        variant="primary"
-      >Edit
+      <b-button size="sm" @click="edit(row.item)" variant="primary">Edit
       </b-button>
-      <b-button
-        size="sm"
-        @click="info(row.item, row.index, $event.target)"
-      >Info modal
+      <b-button size="sm" @click="info(row.item, row.index, $event.target)">Info modal
       </b-button>
       <b-button size="sm" @click="row.toggleDetails">
         {{ row.detailsShowing ? "Hide" : "Show" }} Details
       </b-button>
-      <b-button
-        size="sm"
-        @click="deleteTodo(row.item)"
-        variant="danger"
-      >Delete
+      <b-button size="sm" @click="deleteTodo(row.item)" variant="danger">Delete
       </b-button>
     </template>
 
@@ -118,16 +88,11 @@
 
   <b-row>
     <b-col md="6" class="my-1">
-      <b-pagination
-        :total-rows="totalRows"
-        :per-page="perPage"
-        v-model="currentPage"
-        class="my-0"
-      />
+      <b-pagination :total-rows="totalRows" :per-page="perPage" v-model="currentPage" class="my-0" />
     </b-col>
   </b-row>
 
-    <!-- Info modal -->
+  <!-- Info modal -->
   <b-modal id="modalInfo" @hide="resetModal" :title="modalInfo.title" ok-only>
     <pre>{{ modalInfo.content }}</pre>
   </b-modal>
